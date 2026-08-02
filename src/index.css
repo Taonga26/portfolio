@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+body{
+  background: #051e41;
+  color: white;
+}
+
+.diagonal-right{
+  clip-path: polygon(
+    15% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.about-img{
+  max-height: 250px
+}
+
+input,textarea{
+  border: solid 1px #2563eb;
+  margin: 10px 0;
+
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #2563eb;
+  border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-track{
+  background: #0f172a;
+}
+
+section{
+  scroll-margin-top: 90px;
+}
+
+button:hover{
+  cursor: pointer;
+}
