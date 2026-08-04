@@ -17,7 +17,7 @@ function BackToTop(){
 
         <button
         onClick={()=> window.scrollTo({top: 0, behavior: "smooth"})}
-        className="fixed bottom-6 right-4 bg-blue-600 hover:bg-blue-700 p-4 rounded-full shadow-lg transition"
+        className="fixed bottom-6 right-4 bg-blue-600 hover:bg-blue-700 p-4 rounded-full z-30 shadow-lg transition"
         >
             <FaArrowUp/>
         </button>

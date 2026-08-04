@@ -18,7 +18,22 @@ export const projects = [
         tech: ["Laravel", "PHP", "MySQL"],
         github: "#",
         demo: "#",
-        image: ""
+        image: "/projects/bakery/login.png",
+        screenshots:[
+            "/projects/bakery/dashboard_b.jpg",
+            "/projects/bakery/dashboard.jpg",
+            "/projects/bakery/order.jpg",
+            "/projects/bakery/orders.jpg",
+            "/projects/bakery/payment_cash.jpg",
+            "/projects/bakery/payment.jpg",
+            "/projects/bakery/receipt.jpg",
+            "/projects/bakery/login.png",
+            "/projects/bakery/analytics.png",
+            "/projects/bakery/analytics_b.png",
+            "/projects/bakery/admin_panel.png",
+            "/projects/bakery/new_user.png",
+            "/projects/bakery/products.png"
+        ]
     },
     {
         id: 2,
@@ -35,10 +50,21 @@ export const projects = [
         -Isolation Forest
 
         `,
-        tech: ["Python", "TensorFlow", "Flask"],
+        tech: ["Python", "TensorFlow", "Flask", "Supabase"],
         github: "#",
         demo: "#",
-        image: ""
+        image: "/projects/anomaly/dashboard.png",
+        screenshots:[
+            "/projects/anomaly/analytics.png",
+            "/projects/anomaly/chart.png",
+            "/projects/anomaly/dashboard.png",
+            "/projects/anomaly/deletion.png",
+            "/projects/anomaly/login.png",
+            "/projects/anomaly/register.png",
+            "/projects/anomaly/report.png",
+            "/projects/anomaly/results.png"
+        ]
     },
+    
    
 ]

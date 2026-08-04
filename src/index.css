@@ -10,14 +10,6 @@ body{
   color: white;
 }
 
-.diagonal-right{
-  clip-path: polygon(
-    15% 0,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
 
 .about-img{
   max-height: 250px
