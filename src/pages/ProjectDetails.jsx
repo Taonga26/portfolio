@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import { projects } from "../data/projects";
 import PageTransition from "../components/PageTransition";
 import {
     FaArrowLeft,
@@ -17,9 +16,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState } from "react";
-
-
-
+import { getProjectImage } from "../utils/storage";
+import useProject from "../hooks/useProject";
+import { skillIcons } from "../utils/skills";
+import Loader from "../components/Loader";
 
 
 
@@ -27,9 +27,7 @@ function ProjectDetails(){
 
     const { id } = useParams();
 
-    const project = projects.find(
-        p => p.id === Number(id)
-    );
+    const { project, loading } = useProject(id);
 
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -54,7 +52,15 @@ function ProjectDetails(){
 
     }
 
+    if (loading) {
 
+        return (
+
+          <Loader />
+
+        );
+
+    }
 
     return (
       <PageTransition>
@@ -125,7 +131,7 @@ function ProjectDetails(){
                             leading-8
                         "
             >
-              {project.description}
+              {project.short_description}
             </p>
           </motion.div>
 
@@ -165,9 +171,11 @@ function ProjectDetails(){
                             text-sm
                         "
             >
-              {project.details}
+              {project.description}
             </p>
           </div>
+
+          {/* Screenshots Carousel */}
 
           <motion.section
             initial={{ opacity: 0, y: 40 }}
@@ -243,14 +251,18 @@ function ProjectDetails(){
               }}
               className="rounded-xl overflow-hidden"
             >
-              {project.screenshots.map((image, index) => (
-                <SwiperSlide key={index}>
+              {project.project_images
+                ?.sort((a, b) => a.display_order - b.display_order)
+                .map((shot,index) => (
+                <SwiperSlide key={shot.id}>
                   <img
-                    src={image}
-                    alt={`${project.title} Screenshot ${index + 1}`}
+                    key={shot.id}
+                    src={getProjectImage(shot.image_path)}
+                    alt={shot.caption}
                     onClick={()=> {
-                      setSelectedImage(image);
+                      setSelectedImage(shot);
                       setSelectedIndex(index);
+                      
                     }}
                     className="
                                         w-auto
@@ -260,6 +272,7 @@ function ProjectDetails(){
                                         rounded-xl
                                         mx-auto
                                     "
+                                    loading="lazy"
                   />
                 </SwiperSlide>
               ))}
@@ -270,27 +283,30 @@ function ProjectDetails(){
 
           <div className="mt-10">
             <h2 className="text-2xl font-bold mb-5">Technologies Used</h2>
-
+            
             <div className="flex flex-wrap gap-3">
-              {project.tech.map((item) => (
-                <span
-                  key={item}
-                  className="
-                  bg-blue-600/20
-                  text-blue-400
-                  border
-                  border-blue-500/30
-                  px-4
-                  py-2
-                  rounded-full
-                  text-sm
-                  transition
-                  sm:text-base
-                "
-                >
-                  {item}
-                </span>
-              ))}
+              {project.project_technologies?.map(({ technologies }) => {
+                  const Icon = skillIcons[technologies.icon];
+
+                  return (
+                      <span
+                          key={technologies.id}
+                          className="
+                              inline-flex
+                              items-center
+                              gap-2
+                              bg-blue-600/20
+                              text-slate-400
+                              px-4
+                              py-2
+                              rounded-full
+                          "
+                      >
+                          {Icon && <Icon />}
+                          {technologies.name}
+                      </span>
+                  );
+              })}
             </div>
           </div>
 
@@ -362,6 +378,7 @@ function ProjectDetails(){
                     items-center
                     justify-center
                     p-6
+                    hidden
                 "
                 onClick={() => setSelectedImage(null)}
             >
@@ -381,11 +398,11 @@ function ProjectDetails(){
                       e.stopPropagation();
 
                       const newIndex =
-                          (selectedIndex - 1 + project.screenshots.length) %
-                          project.screenshots.length;
+                          (selectedIndex - 1 + project.project_images.length) %
+                          project.project_images.length;
 
                       setSelectedIndex(newIndex);
-                      setSelectedImage(project.screenshots[newIndex]);
+                      setSelectedImage(project.project_images[newIndex]);
                   }}
                   className="absolute left-6 text-4xl"
               >
@@ -396,11 +413,12 @@ function ProjectDetails(){
                     src={selectedImage}
                     alt=""
                     className="
-                        max-w-[95vw]
-                        max-h-[90vh]
-                        sm:h-auto
-                        rounded-2xl
-                        shadow-2xl
+                      w-auto
+                      max-h-[500px]
+                      h-auto
+                      object-cover
+                      rounded-xl
+                      mx-auto
                     "
                     onClick={(e) => e.stopPropagation()}
                 />
@@ -410,10 +428,10 @@ function ProjectDetails(){
 
                         const newIndex =
                             (selectedIndex + 1) %
-                            project.screenshots.length;
+                            project.project_images.length;
 
                         setSelectedIndex(newIndex);
-                        setSelectedImage(project.screenshots[newIndex]);
+                        setSelectedImage(project.project_images[newIndex]);
                     }}
                     className="absolute right-6 sm:right-2 text-4xl"
                 >

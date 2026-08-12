@@ -1,12 +1,31 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaLinkedin, FaDownload, FaFacebook} from "react-icons/fa";
-import profile from "../assets/images/profile.jpg";
-import { info } from "../data/info";
 import { Link } from "react-router-dom";
+import {getResumeUrl} from "../utils/storage";
+import useResume from "../hooks/useResume";
+import useProfile from "../hooks/useProfile";
+import { getProfileImage } from "../utils/storage";
 
 
 function Hero() {
+
+  const resume = useResume();
+  const {profile, loading, error} = useProfile();
+
+  if (loading) {
+        return <div>Loading...</div>;
+    }
+
+
+  if (error) {
+        return (
+            <div>
+                Failed to load profile.
+            </div>
+        );
+  }
+
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background blobs */}
@@ -36,7 +55,7 @@ function Hero() {
     "
 >
         <img
-    src={profile}
+    src={getProfileImage(profile?.profile_image_path)}
     className="
         w-full
         h-full
@@ -44,6 +63,7 @@ function Hero() {
         skew-x-12
         scale-110
     "
+    loading="eager"
 />
 
         {/* Dark gradient overlay */}
@@ -72,10 +92,10 @@ function Hero() {
 
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight">
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Taonga
+              {profile.name}
             </span>
             <br />
-            Chiwowa
+            {profile.last_name}
           </h1>
 
           <div className="text-lg sm:text-xl lg:text-2xl text-slate-300 mt-8 h-16">
@@ -97,39 +117,39 @@ function Hero() {
           </div>
 
           <p className="text-sm sm:text-base lg:text-lg text-slate-400 mt-8 max-w-xl leading-8">
-            I build modern web applications, mobile applications and AI powered
-            software solutions that solve real-world problems.
+            {profile.short_bio}
           </p>
 
           <div className="flex flex-wrap gap-4 mt-10">
             <Link
               to="/projects"
-              className="bg-blue-600 hover:bg-blue-700 transition px-6 py-3 md:px-8 md:py-4 rounded-xl sm:text-base
+              className="bg-blue-600 hover:bg-blue-700 transition px-6 py-3 md:px-7 md:py-3 rounded-xl sm:text-base
                                     text-sm"
             >
               View Projects
             </Link>
-
-            <a
-              href="#"
-              className="border border-slate-600 hover:border-blue-500 transition px-6 py-3 md:px-8 md:py-4 rounded-xl flex items-center gap-2 sm:text-base
-                                    text-sm"
-            >
-              <FaDownload />
-              Resume
+            
+              <a
+                href={getResumeUrl(resume?.file_url)}
+                className="border border-slate-600 hover:border-blue-500 hover:bg-blue-600 transition px-6 py-3 md:px-7 md:py-3 rounded-xl flex items-center gap-2 sm:text-base
+                                      text-sm"
+              >
+                <FaDownload />
+                Resume
             </a>
+            
           </div>
 
           <div className="flex gap-6 mt-10">
-            <a href={info.github}>
+            <a href={profile.github_url}>
               <FaGithub className="text-xl md:text-2xl" />
             </a>
 
-            <a href={info.linkedin}>
+            <a href={profile.linkedin_url}>
               <FaLinkedin className="text-xl md:text-2xl" />
             </a>
 
-            <a href="#">
+            <a href={profile.facebook_url}>
               <FaFacebook className="text-xl md:text-2xl" />
             </a>
           </div>

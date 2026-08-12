@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import SectionTitle from "./SectionTitle";
 import ProjectCard from "./ProjectCard";
-import { projects } from "../data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -9,9 +8,36 @@ import "swiper/css/pagination";
 import { FaList } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import useFeaturedProjects from "../hooks/useFeaturedProjects";
 
 
 function Projects(){
+
+    const {projects,loading, error} = useFeaturedProjects();
+
+    if (loading) {
+
+        return (
+
+            <div className="py-40 text-center">
+
+                Loading projects...
+
+            </div>
+
+        );
+
+    }
+
+    if (error) {
+        return (
+            <div>
+                Failed to load profile.
+            </div>
+        );
+    }
+
+    
 
     return(
 
@@ -118,6 +144,7 @@ function Projects(){
               >
                 <FaChevronLeft/>
               </button>
+              
               <button className="
                 project-next 
                 absolute

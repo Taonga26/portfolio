@@ -1,14 +1,27 @@
 import { motion } from "framer-motion";
 import SectionTitle from "../components/SectionTitle";
 import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data/projects";
+import useProjects from "../hooks/useProjects";
 import PageTransition from "../components/PageTransition";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import Loader from "../components/Loader";
+
 
 
 function ProjectsView(){
 
+    const {projects,loading} = useProjects();
+
+    if (loading) {
+
+        return (
+
+            <Loader />
+
+        );
+
+    }
 
     return(
 
@@ -94,13 +107,12 @@ function ProjectsView(){
             >
 
                 {
-                    projects.map(
-                        (project,index)=>(
+                    projects.map((project, index) => (
 
 
                         <motion.div
 
-                            key={project.title}
+                            key={project.id}
 
 
                             initial={{
@@ -128,7 +140,7 @@ function ProjectsView(){
                         >
 
                             <ProjectCard
-
+                                key={project.id}
                                 project={project}
 
                             />

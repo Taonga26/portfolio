@@ -6,22 +6,25 @@ import {
     FaGithub
 } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
-import { info } from "../data/info";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import useProfile from "../hooks/useProfile";
 
 
 function Contact(){
+
+    const {profile,loading, error} = useProfile();
 
     const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    const [loading, setLoading] = useState(false);
+    const [emailloading, setLoading] = useState(false);
 
 
     const form = useRef();
+
 
     const sendEmail = async (e) =>{
         e.preventDefault();
@@ -45,6 +48,22 @@ function Contact(){
         }finally{
             setLoading(false);
         }
+    }
+
+    if (loading){
+        return(
+            <div>
+                Loading.....
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div>
+                Failed to load contact.
+            </div>
+        );
     }
 
     return(
@@ -137,7 +156,7 @@ function Contact(){
                             />
 
                             <span>
-                                Lusaka, Zambia
+                                {profile?.location}
                             </span>
 
                         </div>
@@ -151,8 +170,8 @@ function Contact(){
             
                             />
                             
-                            <a href={`mailto:${info.email}`}>
-                                {info.email}
+                            <a href={`mailto:${profile.email}`}>
+                                {profile.email}
                             </a> 
 
                         </div>
@@ -166,7 +185,7 @@ function Contact(){
                     <div className="flex gap-5 mt-10">
 
 
-                        <a href={info.github}>
+                        <a href={profile?.github_url}>
 
                             <FaGithub
                                 size={22}
@@ -176,7 +195,7 @@ function Contact(){
                         </a>
 
 
-                        <a href={info.linkedin}>
+                        <a href={profile?.linkedin_url}>
 
                             <FaLinkedin
                                 size={22}
@@ -275,7 +294,7 @@ function Contact(){
                     <button
 
                         type="submit"
-                        disabled={loading}
+                        disabled={emailloading}
 
                         className="
                             w-full
@@ -290,7 +309,7 @@ function Contact(){
 
                     >
 
-                        {loading ? "Sending..." : "Send Message"}
+                        {emailloading ? "Sending..." : "Send Message"}
 
                     </button>
 

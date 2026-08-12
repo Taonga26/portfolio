@@ -1,9 +1,26 @@
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaGraduationCap, FaLaptopCode, FaBrain } from "react-icons/fa";
-import profile from "../assets/images/profile_1.jpg";
 import SectionTitle from "./SectionTitle";
+import useAbout from "../hooks/useAbout";
+import { getProfileImage } from "../utils/storage";
 
 function About() {
+
+
+    const { about, loading, error } = useAbout();
+
+        if (loading) {
+            return <div>Loading...</div>;
+        }
+
+        if (error) {
+            return <div>Failed to load About section.</div>;
+        }
+
+        if (!about) {
+            return <div>About information not found.</div>;
+        }
+
     return (
         <section
             id="about"
@@ -28,7 +45,7 @@ function About() {
                         <div className="absolute inset-0 rounded-3xl bg-blue-600 blur-3xl opacity-20"></div>
 
                         <img
-                            src={profile}
+                            src={getProfileImage(about?.image_path)}
                             alt="Taonga Chiwowa"
                             className="relative w-[380px] rounded-3xl object-cover shadow-2xl"
                         />
@@ -42,22 +59,28 @@ function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
-                        Full Stack Developer & Machine Learning Enthusiast
-                    </h3>
 
-                    <p className="text-sm sm:text-base lg:text-lg text-slate-400 leading-8">
-                        I'm a Software Developer passionate about
-                        building scalable web applications, mobile apps,
-                        and intelligent software solutions.
+                    {/* Title and Description */}
 
-                        <br /><br />
 
-                        I enjoy turning ideas into real products using
-                        Laravel, React, Flutter, Python and cloud
-                        technologies while continuously learning new
-                        tools and best practices.
-                    </p>
+                        {console.log(about)}
+                        <div>
+                            <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                                {about.title}
+                            </h3>
+
+                            <p className="text-sm sm:text-base lg:text-lg text-slate-400 leading-8">
+                                {about.content}
+                            </p>
+
+                            <br/>
+                            <br />
+
+                            <p className="text-sm sm:text-base lg:text-lg text-slate-400 leading-8">
+                                {about.content_secondary}
+                            </p>
+                        </div>
+            
 
                     {/* Highlights */}
 

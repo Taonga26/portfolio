@@ -4,6 +4,7 @@ import {
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Footer(){
 
@@ -58,7 +59,8 @@ function Footer(){
 
                 {/* Brand */}
 
-                <h2
+                <Link
+                    to="/admin/login"  
                     className="
                         text-2xl
                         font-bold
@@ -70,7 +72,7 @@ function Footer(){
                     "
                 >
                     Taonga Chiwowa
-                </h2>
+                </Link>
 
 
 

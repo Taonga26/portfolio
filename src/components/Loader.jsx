@@ -12,6 +12,7 @@ function Loader(){
                 repeatType: "reverse"
             }}
             className="text-5xl font-bold text-blue-400"
+            animate-pulse
             >
                 TC
             </motion.h1>

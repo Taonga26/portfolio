@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-
+import { getProjectImage } from "../utils/storage";
 
 function ProjectCard({project}){
+
 
     return(
 
@@ -27,129 +28,130 @@ function ProjectCard({project}){
             "
 
         >
+            <Link
+            to={`/project/${project.id}`}
+            >
+                {/* Image */}
+
+                <div className="overflow-hidden">
 
 
-            {/* Image */}
+                    <img
 
-            <div className="overflow-hidden">
+                        src={getProjectImage(project.cover_image)}
 
-                <img
+                        alt={project.title}
 
-                    src={project.image}
+                        className="
+                            w-full
+                            h-56
+                            object-cover
+                            hover:scale-110
+                            transition
+                            duration-500
+                        "
+                        loading="lazy"
 
-                    alt={project.title}
-
-                    className="
-                        w-full
-                        h-56
-                        object-cover
-                        hover:scale-110
-                        transition
-                        duration-500
-                    "
-
-                />
-
-            </div>
-
-
-
-            {/* Content */}
-
-            <div className="p-6">
-
-
-                <h3
-                    className="
-                        text-xl md:text-2xl
-                        font-bold
-                        mb-3
-                    "
-                >
-
-                    {project.title}
-
-                </h3>
-
-
-
-                <p
-                    className="
-                        text-slate-400
-                        text-sm md:text-base
-                        leading-7
-                        mb-6
-                    "
-                >
-
-                    {project.description}
-
-                </p>
-
-
-
-                {/* Technologies */}
-
-                <div className="flex flex-wrap gap-2 mb-6">
-
-                    {
-                        project.tech.map(
-                            tech=>(
-
-                            <span
-
-                                key={tech}
-
-                                className="
-                                    text-sm
-                                    bg-blue-600/20
-                                    text-blue-400
-                                    px-3
-                                    py-1
-                                    rounded-full
-                                "
-
-                            >
-
-                                {tech}
-
-                            </span>
-
-                        ))
-                    }
+                    />
 
                 </div>
 
 
 
-                <Link
+                {/* Content */}
 
-                    to={`/project/${project.id}`}
-
-                    className="
-                        inline-flex
-                        items-center
-                        bg-blue-600
-                        hover:bg-blue-700
-                        px-5
-                        py-1
-                        rounded-xl
-                        transition
-                        text-sm sm:text-base text-white
-                        gap-2
-                    "
-
-                >
-
-                    View Details
-                    <FaArrowRight/>
-
-                </Link>
+                <div className="p-6">
 
 
-            </div>
+                    <h3
+                        className="
+                            text-xl md:text-2xl
+                            font-bold
+                            mb-3
+                        "
+                    >
+
+                        {project.title}
+
+                    </h3>
 
 
+
+                    <p
+                        className="
+                            text-slate-400
+                            text-sm md:text-base
+                            leading-7
+                            mb-6
+                        "
+                    >
+
+                        {project.short_description}
+
+                    </p>
+
+
+
+                    {/* Technologies */}
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+
+                        {
+                            project.project_technologies?.map(({technologies}) => (
+
+                                <span
+
+                                    key={technologies.id}
+
+                                    className="
+                                        text-sm
+                                        bg-blue-600/20
+                                        text-blue-400
+                                        px-3
+                                        py-1
+                                        rounded-full
+                                    "
+
+                                >
+
+                                    {technologies.name}
+
+                                </span>
+
+                            ))
+                        }
+
+                    </div>
+
+
+
+                    <span
+
+                        
+
+                        className="
+                            inline-flex
+                            items-center
+                            bg-blue-600
+                            hover:bg-blue-700
+                            px-5
+                            py-1
+                            rounded-xl
+                            transition
+                            text-sm sm:text-base text-white
+                            gap-2
+                        "
+
+                    >
+
+                        View Details
+                        <FaArrowRight/>
+
+                    </span>
+
+
+                </div>
+            </Link>
         </motion.div>
 
     )
