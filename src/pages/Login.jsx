@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaLock } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import Loader from "../components/Loader";
+import { Link } from "react-router-dom";
 
 function AdminLogin() {
     const { user, loading, login } = useAuth();
@@ -190,6 +191,19 @@ function AdminLogin() {
                     </button>
 
                 </form>
+                <Link
+                    to="/"
+                        className="
+                                    inline-flex
+                                    items-center
+                                    text-blue-400
+                                    hover:text-blue-300
+                                    transition
+                                    mt-2
+                                "
+                    >
+                        Back to site
+                    </Link>
 
             </motion.div>
 

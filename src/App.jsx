@@ -54,13 +54,23 @@ const  AdminProfile = lazy(()=>
 
 function App(){
   return(
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
     <Suspense
       fallback={
         <div className="
         min-h-screen
         flex
-        items-center
+        items-centerimport { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
         justify-center
         bg-slate-950
         text-white
