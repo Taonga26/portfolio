@@ -60,17 +60,7 @@ function App(){
         <div className="
         min-h-screen
         flex
-        items-centerimport { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-
+        items-center
         justify-center
         bg-slate-950
         text-white
