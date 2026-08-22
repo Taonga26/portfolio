@@ -1,0 +1,1 @@
+import{t as e}from"./index-DN3tUcW2.js";import{n as t}from"./Loader-7Exxj53F.js";var n=e();function r({children:e}){return(0,n.jsx)(t.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},exit:{opacity:0,y:-20},transition:{duration:.5},children:e})}export{r as t};

@@ -1,4 +1,4 @@
-import{c as e,f as t,n,t as r}from"./index-ChcaerZv.js";import{H as i,M as a,_ as o,g as s,p as c}from"./fa-3CJALyHk.js";import{t as l}from"./supabase-DDu0klbY.js";import{t as u}from"./Loader-Byx4vKnm.js";import{n as d}from"./storage-Chfi_QH0.js";var f=t(e(),1),p=r();function m(){let[e,t]=(0,f.useState)([]),[r,m]=(0,f.useState)(!0),[h,g]=(0,f.useState)(``);(0,f.useEffect)(()=>{async function e(){m(!0),g(``);let{data:e,error:n}=await l.from(`projects`).select(`
+import{c as e,f as t,n,t as r}from"./index-DN3tUcW2.js";import{H as i,M as a,_ as o,g as s,p as c}from"./fa-C6WVuVpN.js";import{t as l}from"./supabase-DDu0klbY.js";import{t as u}from"./Loader-7Exxj53F.js";import{n as d}from"./storage-Chfi_QH0.js";var f=t(e(),1),p=r();function m(){let[e,t]=(0,f.useState)([]),[r,m]=(0,f.useState)(!0),[h,g]=(0,f.useState)(``);(0,f.useEffect)(()=>{async function e(){m(!0),g(``);let{data:e,error:n}=await l.from(`projects`).select(`
                     id,
                     title,
                     short_description,

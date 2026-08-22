@@ -1,17 +1,16 @@
-import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as a,t as o}from"./fa-3CJALyHk.js";import{t as s}from"./supabase-DDu0klbY.js";import{n as c,t as l}from"./SkillIcon-DnkGnzgR.js";var u=t(e(),1),d=i();function f(){let e=n(),{id:t}=r(),i=!!t,[f,p]=(0,u.useState)(``),[m,h]=(0,u.useState)(``),[g,_]=(0,u.useState)(``),[v,y]=(0,u.useState)(i),[b,x]=(0,u.useState)(!1),[S,C]=(0,u.useState)(``),w=[`Frontend`,`Backend`,`Mobile`,`Database`,`Tools`,`Machine Learning`];(0,u.useEffect)(()=>{if(!i)return;async function e(){y(!0);let{data:e,error:n}=await s.from(`skills`).select(`
+import{c as e,f as t,o as n,s as r,t as i}from"./index-DN3tUcW2.js";import{I as a,t as o}from"./fa-C6WVuVpN.js";import{t as s}from"./supabase-DDu0klbY.js";import{n as c,t as l}from"./SkillIcon-BFSEj7FB.js";var u=t(e(),1),d=i();function f(){let e=n(),{id:t}=r(),i=!!t,[f,p]=(0,u.useState)(``),[m,h]=(0,u.useState)(``),[g,_]=(0,u.useState)(i),[v,y]=(0,u.useState)(!1),[b,x]=(0,u.useState)(``);(0,u.useEffect)(()=>{if(!i)return;async function e(){_(!0);let{data:e,error:n}=await s.from(`technologies`).select(`
                     id,
                     name,
-                    category,
                     icon
-                `).eq(`id`,t).single();if(n){console.error(n),C(n.message),y(!1);return}p(e.name||``),h(e.category||``),_(e.icon||``),y(!1)}e()},[t,i]);async function T(n){if(n.preventDefault(),C(``),!f.trim()){C(`Skill name is required.`);return}if(!m){C(`Please select a category.`);return}if(!g){C(`Please select an icon.`);return}x(!0);let r={name:f.trim(),category:m,icon:g},a;if(a=i?await s.from(`skills`).update(r).eq(`id`,t):await s.from(`skills`).insert(r),a.error){console.error(a.error),C(a.error.message),x(!1);return}e(`/admin/skills`)}return v?(0,d.jsx)(`div`,{className:`
+                `).eq(`id`,t).single();if(n){console.error(n),x(n.message),_(!1);return}p(e.name||``),h(e.icon||``),_(!1)}e()},[t,i]);async function S(n){if(n.preventDefault(),x(``),!f.trim()){x(`Technology name is required.`);return}if(!m){x(`Please select an icon.`);return}let r={name:f.trim(),icon:m};y(!0);let a;if(a=i?await s.from(`technologies`).update(r).eq(`id`,t):await s.from(`technologies`).insert(r),a.error){console.error(a.error),x(a.error.message),y(!1);return}e(`/admin/technologies`)}return g?(0,d.jsx)(`div`,{className:`
                 p-8
                 text-slate-400
-            `,children:`Loading skill...`}):(0,d.jsxs)(`div`,{className:`
+            `,children:`Loading technology...`}):(0,d.jsxs)(`div`,{className:`
             max-w-4xl
             mx-auto
             p-6
             md:p-8
-        `,children:[(0,d.jsxs)(`button`,{type:`button`,onClick:()=>e(`/admin/skills`),className:`
+        `,children:[(0,d.jsxs)(`button`,{type:`button`,onClick:()=>e(`/admin/technologies`),className:`
                     inline-flex
                     items-center
                     gap-2
@@ -19,14 +18,14 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                     hover:text-white
                     transition
                     mb-8
-                `,children:[(0,d.jsx)(o,{}),`Back to Skills`]}),(0,d.jsxs)(`div`,{className:`mb-8`,children:[(0,d.jsx)(`h1`,{className:`
+                `,children:[(0,d.jsx)(o,{}),`Back to technologies`]}),(0,d.jsxs)(`div`,{className:`mb-8`,children:[(0,d.jsx)(`h1`,{className:`
                     text-2xl
                     md:text-3xl
                     font-bold
-                `,children:i?`Edit Skill`:`Add Skill`}),(0,d.jsx)(`p`,{className:`
+                `,children:i?`Edit Technology`:`Add Technology`}),(0,d.jsx)(`p`,{className:`
                     text-slate-400
                     mt-2
-                `,children:i?`Update the skill information.`:`Add a new skill to your portfolio.`})]}),S&&(0,d.jsx)(`div`,{className:`
+                `,children:i?`Update the technology information.`:`Add a new technology to your portfolio.`})]}),b&&(0,d.jsx)(`div`,{className:`
                     mb-6
                     p-4
                     rounded-xl
@@ -34,7 +33,7 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                     border
                     border-red-500/30
                     text-red-400
-                `,children:S}),(0,d.jsxs)(`form`,{onSubmit:T,className:`
+                `,children:b}),(0,d.jsxs)(`form`,{onSubmit:S,className:`
                     bg-slate-900
                     border
                     border-slate-800
@@ -47,7 +46,7 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                         text-sm
                         font-medium
                         mb-2
-                    `,children:`Skill Name`}),(0,d.jsx)(`input`,{type:`text`,value:f,onChange:e=>p(e.target.value),placeholder:`e.g. React`,className:`
+                    `,children:`Technology Name`}),(0,d.jsx)(`input`,{type:`text`,value:f,onChange:e=>p(e.target.value),placeholder:`e.g. React`,className:`
                             w-full
                             bg-slate-800
                             border
@@ -57,22 +56,7 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                             py-3
                             outline-none
                             focus:border-blue-500
-                        `})]}),(0,d.jsxs)(`div`,{children:[(0,d.jsx)(`label`,{className:`
-                        block
-                        text-sm
-                        font-medium
-                        mb-2
-                    `,children:`Category`}),(0,d.jsxs)(`select`,{value:m,onChange:e=>h(e.target.value),className:`
-                            w-full
-                            bg-slate-800
-                            border
-                            border-slate-700
-                            rounded-xl
-                            px-4
-                            py-3
-                            outline-none
-                            focus:border-blue-500
-                        `,children:[(0,d.jsx)(`option`,{value:``,children:`Select category`}),w.map(e=>(0,d.jsx)(`option`,{value:e,children:e},e))]})]}),(0,d.jsxs)(`div`,{children:[(0,d.jsxs)(`div`,{className:`
+                        `})]}),(0,d.jsxs)(`div`,{children:[(0,d.jsxs)(`div`,{className:`
                         flex
                         items-center
                         justify-between
@@ -81,13 +65,13 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                             block
                             text-sm
                             font-medium
-                        `,children:`Icon`}),g&&(0,d.jsxs)(`div`,{className:`
+                        `,children:`Icon`}),m&&(0,d.jsxs)(`div`,{className:`
                                 flex
                                 items-center
                                 gap-2
                                 text-blue-400
                                 text-sm
-                            `,children:[(0,d.jsx)(l,{icon:g,className:`text-xl`}),g]})]}),(0,d.jsx)(`div`,{className:`
+                            `,children:[(0,d.jsx)(l,{icon:m,className:`text-xl`}),m]})]}),(0,d.jsx)(`div`,{className:`
                         grid
                         grid-cols-4
                         sm:grid-cols-6
@@ -96,7 +80,7 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                         max-h-80
                         overflow-y-auto
                         p-2
-                    `,children:Object.keys(c).map(e=>(0,d.jsx)(`button`,{type:`button`,title:e,onClick:()=>_(e),className:`
+                    `,children:Object.keys(c).map(e=>(0,d.jsx)(`button`,{type:`button`,title:e,onClick:()=>h(e),className:`
                                         aspect-square
                                         rounded-xl
                                         border
@@ -105,7 +89,7 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                                         justify-center
                                         transition
 
-                                        ${g===e?`
+                                        ${m===e?`
                                                     bg-blue-600/20
                                                     border-blue-500
                                                     text-blue-400
@@ -128,14 +112,14 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                     pt-4
                     border-t
                     border-slate-800
-                `,children:[(0,d.jsx)(`button`,{type:`button`,onClick:()=>e(`/admin/skills`),className:`
+                `,children:[(0,d.jsx)(`button`,{type:`button`,onClick:()=>e(`/admin/technologies`),className:`
                             px-5
                             py-3
                             rounded-xl
                             bg-slate-800
                             hover:bg-slate-700
                             transition
-                        `,children:`Cancel`}),(0,d.jsxs)(`button`,{type:`submit`,disabled:b,className:`
+                        `,children:`Cancel`}),(0,d.jsxs)(`button`,{type:`submit`,disabled:v,className:`
                             inline-flex
                             items-center
                             justify-center
@@ -147,4 +131,4 @@ import{c as e,f as t,o as n,s as r,t as i}from"./index-ChcaerZv.js";import{I as 
                             hover:bg-blue-700
                             disabled:opacity-50
                             transition
-                        `,children:[(0,d.jsx)(a,{}),b?`Saving...`:i?`Update Skill`:`Save Skill`]})]})]})]})}export{f as default};
+                        `,children:[(0,d.jsx)(a,{}),v?`Saving...`:i?`Update Technology`:`Save Technology`]})]})]})]})}export{f as default};

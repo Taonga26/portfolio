@@ -1,4 +1,4 @@
-import{c as e,f as t,o as n,t as r}from"./index-ChcaerZv.js";import{H as i,M as a,p as o}from"./fa-3CJALyHk.js";import{t as s}from"./supabase-DDu0klbY.js";import{t as c}from"./Loader-Byx4vKnm.js";import{t as l}from"./SkillIcon-DnkGnzgR.js";var u=t(e(),1),d=r();function f(){let[e,t]=(0,u.useState)([]),[r,f]=(0,u.useState)(!0),[p,m]=(0,u.useState)(``),h=n();(0,u.useEffect)(()=>{async function e(){f(!0),m(``);let{data:e,error:n}=await s.from(`skills`).select(`
+import{c as e,f as t,o as n,t as r}from"./index-DN3tUcW2.js";import{H as i,M as a,p as o}from"./fa-C6WVuVpN.js";import{t as s}from"./supabase-DDu0klbY.js";import{t as c}from"./Loader-7Exxj53F.js";import{t as l}from"./SkillIcon-BFSEj7FB.js";var u=t(e(),1),d=r();function f(){let[e,t]=(0,u.useState)([]),[r,f]=(0,u.useState)(!0),[p,m]=(0,u.useState)(``),h=n();(0,u.useEffect)(()=>{async function e(){f(!0),m(``);let{data:e,error:n}=await s.from(`skills`).select(`
                     id,
                     category,
                     name,
