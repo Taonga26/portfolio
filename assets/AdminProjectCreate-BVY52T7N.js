@@ -1,0 +1,273 @@
+import{c as e,f as t,n,o as r,t as i}from"./index-BR-L_-sg.js";import{B as a,M as o,T as s,t as c}from"./fa-BlK4pbMx.js";import{t as l}from"./supabase-DDu0klbY.js";import"./storage-Chfi_QH0.js";var u=t(e(),1),d=i();function f(){let e=r(),[t,i]=(0,u.useState)([]),[f,p]=(0,u.useState)(``),[m,h]=(0,u.useState)(``),[g,_]=(0,u.useState)(``),[v,y]=(0,u.useState)(``),[b,x]=(0,u.useState)(``),[S,C]=(0,u.useState)(!0),[w,T]=(0,u.useState)(!1),[E,D]=(0,u.useState)([]),[O,k]=(0,u.useState)(null),[A,j]=(0,u.useState)([]),[M,N]=(0,u.useState)(!0),[P,F]=(0,u.useState)(!1),[I,L]=(0,u.useState)(``);(0,u.useEffect)(()=>{async function e(){let{data:e,error:t}=await l.from(`technologies`).select(`id, name, icon`).order(`name`);t?L(t.message):i(e||[]),N(!1)}e()},[]);function R(e){D(t=>t.includes(e)?t.filter(t=>t!==e):[...t,e])}function z(e){let t=e.target.files?.[0];t&&k(t)}function B(e){let t=Array.from(e.target.files||[]);j(e=>[...e,...t])}function V(e){j(t=>t.filter((t,n)=>n!==e))}async function H(e,t){let{error:n}=await l.storage.from(`Projects`).upload(t,e,{cacheControl:`3600`,upsert:!1});if(n)throw n;return t}async function U(t){t.preventDefault(),L(``),F(!0);try{if(!f.trim())throw Error(`Project title is required.`);if(!m.trim())throw Error(`Short description is required.`);if(!g.trim())throw Error(`Project description is required.`);if(!O)throw Error(`Please select a cover image.`);let{data:t,error:n}=await l.from(`projects`).insert({title:f.trim(),short_description:m.trim(),description:g.trim(),github:v.trim()||null,demo:b.trim()||null,published:S,featured:w}).select().single();if(n)throw n;let r=`${t.id}`,i=`${r}/cover.${O.name.split(`.`).pop()?.toLowerCase()||`png`}`;await H(O,i);let{error:a}=await l.from(`projects`).update({cover_image:i}).eq(`id`,t.id);if(a)throw a;if(E.length>0){let e=E.map(e=>({project_id:t.id,technology_id:e})),{error:n}=await l.from(`project_technologies`).insert(e);if(n)throw n}if(A.length>0){let e=[];for(let n=0;n<A.length;n++){let i=A[n],a=i.name.split(`.`).pop()?.toLowerCase()||`png`,o=`${r}/screenshots/${n+1}.${a}`;await H(i,o),e.push({project_id:t.id,image_path:o,caption:i.name,display_order:n})}let{error:n}=await l.from(`project_images`).insert(e);if(n)throw n}e(`/admin/projects`)}catch(e){console.error(e),L(e.message||`Something went wrong while creating the project.`)}finally{F(!1)}}return(0,d.jsxs)(`div`,{className:`max-w-5xl mx-auto`,children:[(0,d.jsxs)(`div`,{className:`mb-8`,children:[(0,d.jsxs)(n,{to:`/admin/projects`,className:`
+                        inline-flex
+                        items-center
+                        gap-2
+                        text-slate-400
+                        hover:text-white
+                        mb-5
+                        transition
+                    `,children:[(0,d.jsx)(c,{}),`Back to Projects`]}),(0,d.jsx)(`h1`,{className:`
+                    text-3xl
+                    md:text-4xl
+                    font-bold
+                `,children:`Add Project`}),(0,d.jsx)(`p`,{className:`
+                    text-slate-400
+                    mt-2
+                `,children:`Add a new project to your portfolio.`})]}),(0,d.jsxs)(`form`,{onSubmit:U,className:`space-y-8`,children:[(0,d.jsxs)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    md:p-8
+                `,children:[(0,d.jsx)(`h2`,{className:`
+                        text-xl
+                        font-bold
+                        mb-6
+                    `,children:`Project Information`}),(0,d.jsxs)(`div`,{className:`space-y-6`,children:[(0,d.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-[180px_1fr] items-center gap-3`,children:[(0,d.jsx)(`label`,{className:`
+                                block
+                                text-sm
+                                font-medium
+                                text-slate-300
+                                mb-2
+                                font-semibold
+                            `,children:`Project Title`}),(0,d.jsx)(`input`,{type:`text`,value:f,onChange:e=>p(e.target.value),placeholder:`Bakery POS System`,className:`input rounded-xl px-3 py-2 w-full`,required:!0})]}),(0,d.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-[180px_1fr] items-center gap-3`,children:[(0,d.jsx)(`label`,{className:`
+                                block
+                                text-sm
+                                font-medium
+                                text-slate-300
+                                mb-2
+                                font-semibold
+                            `,children:`Short Description`}),(0,d.jsx)(`input`,{type:`text`,value:m,onChange:e=>h(e.target.value),placeholder:`A Laravel-based point of sale system.`,className:`input rounded-xl px-3 py-2 w-full`,required:!0})]}),(0,d.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-[180px_1fr] items-start gap-3`,children:[(0,d.jsx)(`label`,{className:`
+                                block
+                                text-sm
+                                font-medium
+                                text-slate-300
+                                mb-2
+                                font-semibold
+                            `,children:`Project Description`}),(0,d.jsx)(`textarea`,{rows:8,value:g,onChange:e=>_(e.target.value),placeholder:`Describe the project...`,className:`input resize-y rounded-xl px-3 py-2 w-full`,required:!0})]})]})]}),(0,d.jsxs)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    md:p-8
+                `,children:[(0,d.jsx)(`h2`,{className:`
+                        text-xl
+                        font-bold
+                        mb-6
+                    `,children:`Project Links`}),(0,d.jsxs)(`div`,{className:`
+                        grid
+                        md:grid-cols-2
+                        gap-6
+                    `,children:[(0,d.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-[180px_1fr] items-center gap-3`,children:[(0,d.jsx)(`label`,{className:`
+                                block
+                                text-sm
+                                text-slate-300
+                                mb-2
+                                font-semibold
+                            `,children:`GitHub URL`}),(0,d.jsx)(`input`,{type:`url`,value:v,onChange:e=>y(e.target.value),placeholder:`https://github.com/...`,className:`input rounded-xl px-3 py-2 w-full`})]}),(0,d.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-[180px_1fr] items-center gap-3`,children:[(0,d.jsx)(`label`,{className:`
+                                block
+                                text-sm
+                                text-slate-300
+                                mb-2
+                                font-semibold
+                            `,children:`Demo URL`}),(0,d.jsx)(`input`,{type:`url`,value:b,onChange:e=>x(e.target.value),placeholder:`https://...`,className:`input rounded-xl px-3 py-2 w-full`})]})]})]}),(0,d.jsxs)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    md:p-8
+                `,children:[(0,d.jsx)(`h2`,{className:`
+                        text-xl
+                        font-bold
+                        mb-2
+                    `,children:`Technologies`}),(0,d.jsx)(`p`,{className:`
+                        text-slate-400
+                        text-sm
+                        mb-6
+                    `,children:`Select the technologies used in this project.`}),M?(0,d.jsx)(`p`,{className:`text-slate-500`,children:`Loading technologies...`}):(0,d.jsx)(`div`,{className:`
+                            grid
+                            grid-cols-2
+                            sm:grid-cols-3
+                            md:grid-cols-4
+                            gap-3
+                        `,children:t.map(e=>{let t=E.includes(e.id);return(0,d.jsx)(`button`,{type:`button`,onClick:()=>R(e.id),className:`
+                                                text-left
+                                                px-4
+                                                py-3
+                                                rounded-xl
+                                                border
+                                                transition
+
+                                                ${t?`bg-blue-600/20 border-blue-500 text-blue-400`:`bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-500`}
+                                            `,children:e.name},e.id)})})]}),(0,d.jsxs)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    md:p-8
+                `,children:[(0,d.jsx)(`h2`,{className:`
+                        text-xl
+                        font-bold
+                        mb-6
+                    `,children:`Project Images`}),(0,d.jsxs)(`div`,{className:`mb-8`,children:[(0,d.jsx)(`label`,{className:`
+                            block
+                            text-sm
+                            text-slate-300
+                            mb-3
+                        `,children:`Cover Image`}),(0,d.jsxs)(`label`,{className:`
+                            flex
+                            flex-col
+                            items-center
+                            justify-center
+                            min-h-48
+                            border-2
+                            border-dashed
+                            border-slate-700
+                            rounded-2xl
+                            cursor-pointer
+                            hover:border-blue-500
+                            hover:bg-slate-800/50
+                            transition
+                        `,children:[(0,d.jsx)(s,{className:`
+                                    text-3xl
+                                    text-slate-500
+                                    mb-3
+                                `}),(0,d.jsx)(`span`,{className:`
+                                text-slate-300
+                                font-medium
+                            `,children:O?O.name:`Choose cover image`}),(0,d.jsx)(`span`,{className:`
+                                text-xs
+                                text-slate-500
+                                mt-2
+                            `,children:`PNG, JPG or WEBP`}),(0,d.jsx)(`input`,{type:`file`,accept:`image/*`,onChange:z,className:`hidden`})]})]}),(0,d.jsxs)(`div`,{children:[(0,d.jsxs)(`div`,{className:`
+                            flex
+                            items-center
+                            justify-between
+                            mb-3
+                        `,children:[(0,d.jsx)(`label`,{className:`
+                                text-sm
+                                text-slate-300
+                            `,children:`Screenshots`}),(0,d.jsxs)(`label`,{className:`
+                                inline-flex
+                                items-center
+                                gap-2
+                                text-sm
+                                text-blue-400
+                                cursor-pointer
+                            `,children:[(0,d.jsx)(o,{}),`Add Screenshots`,(0,d.jsx)(`input`,{type:`file`,accept:`image/*`,multiple:!0,onChange:B,className:`hidden`})]})]}),A.length===0?(0,d.jsx)(`div`,{className:`
+                                border
+                                border-dashed
+                                border-slate-800
+                                rounded-xl
+                                p-8
+                                text-center
+                                text-slate-500
+                            `,children:`No screenshots selected.`}):(0,d.jsx)(`div`,{className:`
+                                grid
+                                grid-cols-2
+                                md:grid-cols-3
+                                gap-4
+                            `,children:A.map((e,t)=>(0,d.jsxs)(`div`,{className:`
+                                            relative
+                                            group
+                                            rounded-xl
+                                            overflow-hidden
+                                            bg-slate-800
+                                        `,children:[(0,d.jsx)(`img`,{src:URL.createObjectURL(e),alt:e.name,className:`
+                                                w-full
+                                                h-32
+                                                object-cover
+                                            `}),(0,d.jsx)(`button`,{type:`button`,onClick:()=>V(t),className:`
+                                                absolute
+                                                top-2
+                                                right-2
+                                                w-8
+                                                h-8
+                                                flex
+                                                items-center
+                                                justify-center
+                                                rounded-full
+                                                bg-black/70
+                                                text-white
+                                                hover:bg-red-600
+                                            `,children:(0,d.jsx)(a,{})})]},`${e.name}-${e.lastModified}-${t}`))})]})]}),(0,d.jsx)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    md:p-8
+                `,children:(0,d.jsxs)(`label`,{className:`
+                        flex
+                        items-center
+                        gap-4
+                        cursor-pointer
+                    `,children:[(0,d.jsx)(`input`,{type:`checkbox`,checked:S,onChange:e=>C(e.target.checked),className:`
+                                w-5
+                                h-5
+                                accent-blue-600
+                            `}),(0,d.jsxs)(`div`,{children:[(0,d.jsx)(`span`,{className:`
+                                block
+                                font-medium
+                            `,children:`Publish project`}),(0,d.jsx)(`span`,{className:`
+                                text-sm
+                                text-slate-500
+                            `,children:`Published projects appear on the public portfolio.`})]})]})}),(0,d.jsx)(`section`,{className:`
+                    bg-slate-900
+                    border
+                    border-slate-800
+                    rounded-2xl
+                    p-6
+                    mt-4
+                `,children:(0,d.jsxs)(`label`,{className:`
+                        flex
+                        items-center
+                        gap-4
+                        cursor-pointer
+                    `,children:[(0,d.jsx)(`input`,{type:`checkbox`,checked:w,onChange:e=>T(e.target.checked),className:`
+                                w-5
+                                h-5
+                                accent-blue-600
+                            `}),(0,d.jsxs)(`div`,{children:[(0,d.jsx)(`span`,{className:`
+                                block
+                                font-medium
+                            `,children:`Featured`}),(0,d.jsx)(`span`,{className:`
+                                text-sm
+                                text-slate-500
+                            `,children:`Show this project on the public portfolio highlight.`})]})]})}),I&&(0,d.jsx)(`div`,{className:`
+                        bg-red-500/10
+                        border
+                        border-red-500/30
+                        text-red-400
+                        rounded-xl
+                        p-4
+                        mt-6
+                    `,children:I}),(0,d.jsxs)(`div`,{className:`
+                    flex
+                    flex-col-reverse
+                    sm:flex-row
+                    justify-end
+                    gap-3
+                `,children:[(0,d.jsx)(n,{to:`/admin/projects`,className:`
+                            px-6
+                            py-3
+                            rounded-xl
+                            bg-slate-800
+                            hover:bg-slate-700
+                            text-center
+                            transition
+                        `,children:`Cancel`}),(0,d.jsx)(`button`,{type:`submit`,disabled:P,className:`
+                            px-6
+                            py-3
+                            rounded-xl
+                            bg-blue-600
+                            hover:bg-blue-700
+                            disabled:opacity-50
+                            disabled:cursor-not-allowed
+                            transition
+                            font-medium
+                        `,children:P?`Creating Project...`:`Create Project`})]})]})]})}export{f as default};
