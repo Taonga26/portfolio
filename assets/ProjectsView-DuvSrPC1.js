@@ -1,4 +1,4 @@
-import{c as e,f as t,n,t as r}from"./index-BR-L_-sg.js";import{t as i}from"./fa-BlK4pbMx.js";import{t as a}from"./supabase-DDu0klbY.js";import{n as o,t as s}from"./Loader-D31zcNVD.js";import{n as c,t as l}from"./ProjectCard-De5wXfE3.js";import{t as u}from"./PageTransition-DuAVdGea.js";var d=t(e(),1);function f(){let[e,t]=(0,d.useState)([]),[n,r]=(0,d.useState)(!0);return(0,d.useEffect)(()=>{async function e(){let{data:e,error:n}=await a.from(`projects`).select(`
+import{c as e,f as t,n,t as r}from"./index-ChcaerZv.js";import{t as i}from"./fa-3CJALyHk.js";import{t as a}from"./supabase-DDu0klbY.js";import{n as o,t as s}from"./Loader-Byx4vKnm.js";import{n as c,t as l}from"./ProjectCard-Ml_K77M0.js";import{t as u}from"./PageTransition-BNcEJF4z.js";var d=t(e(),1);function f(){let[e,t]=(0,d.useState)([]),[n,r]=(0,d.useState)(!0);return(0,d.useEffect)(()=>{async function e(){let{data:e,error:n}=await a.from(`projects`).select(`
                     *,
                     project_technologies(
                         technologies(

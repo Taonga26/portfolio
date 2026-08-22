@@ -1,4 +1,4 @@
-import{c as e,f as t,o as n,t as r}from"./index-BR-L_-sg.js";import{H as i,M as a,p as o}from"./fa-BlK4pbMx.js";import{t as s}from"./supabase-DDu0klbY.js";import{t as c}from"./SkillIcon-CoJp1735.js";var l=t(e(),1),u=r();function d(){let e=n(),[t,r]=(0,l.useState)([]),[d,f]=(0,l.useState)(!0),[p,m]=(0,l.useState)(``);(0,l.useEffect)(()=>{async function e(){f(!0),m(``);let{data:e,error:t}=await s.from(`technologies`).select(`
+import{c as e,f as t,o as n,t as r}from"./index-ChcaerZv.js";import{H as i,M as a,p as o}from"./fa-3CJALyHk.js";import{t as s}from"./supabase-DDu0klbY.js";import{t as c}from"./SkillIcon-DnkGnzgR.js";var l=t(e(),1),u=r();function d(){let e=n(),[t,r]=(0,l.useState)([]),[d,f]=(0,l.useState)(!0),[p,m]=(0,l.useState)(``);(0,l.useEffect)(()=>{async function e(){f(!0),m(``);let{data:e,error:t}=await s.from(`technologies`).select(`
                     id,
                     name,
                     icon

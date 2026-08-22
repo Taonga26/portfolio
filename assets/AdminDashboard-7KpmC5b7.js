@@ -1,4 +1,4 @@
-import{n as e,t}from"./index-BR-L_-sg.js";import{N as n,V as r,b as i,c as a}from"./fa-BlK4pbMx.js";var o=t();function s(){return(0,o.jsxs)(`div`,{className:`max-w-7xl mx-auto`,children:[(0,o.jsxs)(`div`,{className:`mb-10`,children:[(0,o.jsx)(`h1`,{className:`text-3xl md:text-4xl font-bold`,children:`Dashboard`}),(0,o.jsx)(`p`,{className:`text-slate-400 mt-2`,children:`Manage your portfolio content.`})]}),(0,o.jsx)(`div`,{className:`
+import{n as e,t}from"./index-ChcaerZv.js";import{N as n,V as r,b as i,c as a}from"./fa-3CJALyHk.js";var o=t();function s(){return(0,o.jsxs)(`div`,{className:`max-w-7xl mx-auto`,children:[(0,o.jsxs)(`div`,{className:`mb-10`,children:[(0,o.jsx)(`h1`,{className:`text-3xl md:text-4xl font-bold`,children:`Dashboard`}),(0,o.jsx)(`p`,{className:`text-slate-400 mt-2`,children:`Manage your portfolio content.`})]}),(0,o.jsx)(`div`,{className:`
                     grid
                     sm:grid-cols-2
                     xl:grid-cols-4
